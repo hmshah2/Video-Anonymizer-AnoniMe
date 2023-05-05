@@ -64,8 +64,11 @@ def main():
     method = "pixelated"
     params = {"k": 99, "sigma": 30, "blocks": 10}
 
+    # Get the input video file from the user
+    input_file = input("Enter the path to the video file: ")
+
     # Initialize the video stream
-    vs = cv2.VideoCapture('haley.mp4')
+    vs = cv2.VideoCapture(input_file)
     output_file = "output_video.mp4"
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
