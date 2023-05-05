@@ -55,6 +55,7 @@ def process_frame(frame, face_detector, method, params, confidence=0.5):
             frame[startY:endY, startX:endX] = anonymized_face
 
     return frame
+
 def main():
     # Load the face detector
     face_detector = load_face_detector()
@@ -65,9 +66,9 @@ def main():
 
     # Initialize the video stream
     vs = cv2.VideoCapture('haley.mp4')
-    output_file = "output_video.avi"
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    
+    output_file = "output_video.mp4"
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
     # Get the input video's FPS
     fps = int(vs.get(cv2.CAP_PROP_FPS))
 
