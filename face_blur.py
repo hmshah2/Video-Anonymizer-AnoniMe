@@ -55,19 +55,18 @@ def process_frame(frame, face_detector, method, params, confidence=0.5):
             frame[startY:endY, startX:endX] = anonymized_face
 
     return frame
-
 def main():
     # Load the face detector
     face_detector = load_face_detector()
 
     # Set the anonymization method and parameters
     method = "pixelated"
-    params = {"k": 99, "sigma": 30, "blocks": 20}
+    params = {"k": 99, "sigma": 30, "blocks": 10}
 
     # Initialize the video stream
     vs = cv2.VideoCapture('haley.mp4')
-    output_file = "output_video.mp4"
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    output_file = "output_video.avi"
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
     
     # Get the input video's FPS
     fps = int(vs.get(cv2.CAP_PROP_FPS))
