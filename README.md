@@ -43,7 +43,7 @@ The Flask API server will start on `http://localhost:5000`.
 
 #### Frontend Server
 
-Navigate to the `client` folder and run the following command to start the React app:
+Create a new command prompt or terminal window. Navigate to the `client` folder and run the following command to start the React app:
 
 ```
 cd client
