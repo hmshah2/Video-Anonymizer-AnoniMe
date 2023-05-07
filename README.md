@@ -77,12 +77,6 @@ CS-445-Final-Project/
 
 ## Usage
 
-For the web app, upload an input video file and provide an output filename. Click on the "Anonymize Video" button to process the video. After processing, the output video will be available for download.
+For the web app, upload an input video file and provide an output filename. Click on the "Anonymize Video" button to process the video. After processing, the output video will be automatically download.
 
 For the standalone `face_blur.py`, provide the input video file path when prompted. The output video will be saved in the `output_videos` folder as `output_video.mp4`.
-
-
-
-
-
-
