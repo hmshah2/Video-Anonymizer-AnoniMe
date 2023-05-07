@@ -8,7 +8,7 @@ import os
 def load_face_detector():
     # Load the pre-trained OpenCV face detector model
     prototxt_path = os.path.join(os.path.dirname(__file__), 'deploy.prototxt')
-    weights_path = os.path.join(os.path.dirname(__file__), 'res10_300x300_ssd_iter_140000.caffemodel')
+    weights_path = os.path.join(os.path.dirname(__file__), 'res10_300x300_ssd_iter_140000 2.caffemodel')
 
     face_detector = cv2.dnn.readNet(prototxt_path, weights_path)
     return face_detector
