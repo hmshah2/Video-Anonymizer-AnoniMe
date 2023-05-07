@@ -55,43 +55,48 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="mb-4">Video Anonymizer</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="inputVideo" className="form-label">
-            Input video
-          </label>
-          <input
-            type="file"
-            className="form-control custom-file-input"
-            id="inputVideo"
-            onChange={(e) => setInputFile(e.target.files[0])}
-          />
-        </div>
-        <div className="mb-3">
-        <label htmlFor="outputFilename" className="form-label">
-            Output filename
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="outputFilename"
-            value={outputFilename}
-            onChange={(e) => setOutputFilename(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary" disabled={isProcessing}>
-          {isProcessing ? "Processing..." : "Anonymize Video"}
-        </button>
-      </form>
+      <div className="box"></div>
+      <div className="inner-box">
+        <h1 className="mb-4">AnoniMe</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="inputVideo" className="form-label">
+              Input video
+            </label>
+            <input
+              type="file"
+              className="form-control custom-file-input"
+              id="inputVideo"
+              onChange={(e) => setInputFile(e.target.files[0])}
+            />
+          </div>
+          <div className="mb-3">
+          <label htmlFor="outputFilename" className="form-label">
+              Output filename
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="outputFilename"
+              value={outputFilename}
+              onChange={(e) => setOutputFilename(e.target.value)}
+            />
+          </div>
+          <div className="enter">
+            <button type="submit" className="btn btn-primary" disabled={isProcessing}>
+              {isProcessing ? "Processing..." : "Anonymize Video"}
+            </button>
+          </div>
+        </form>
 
-      {outputVideoUrl && (
-        <div className="mt-4">
-          <a href={outputVideoUrl} download className="btn btn-success">
-            Download Output Video
-          </a>
-        </div>
-      )}
+        {outputVideoUrl && (
+          <div className="mt-4">
+            <a href={outputVideoUrl} download className="btn btn-success">
+              Download Output Video
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

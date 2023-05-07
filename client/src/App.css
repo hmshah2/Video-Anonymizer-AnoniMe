@@ -8,17 +8,26 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
+  background-image: url('pixel_background.avif');
+  background-repeat: no-repeat;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 50px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  color: white;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
 a {
   color: #007bff;
@@ -30,15 +39,31 @@ a:hover {
   text-decoration: underline;
 }
 
+.box {
+  padding-top: 10%;
+}
+
+.inner-box {
+  background-color: rgb(76, 143, 225);
+  margin: auto;
+  width: 50%;
+  border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
 .form-group {
   margin-bottom: 1.5rem;
 }
 
 .form-control {
+  font-family: "Titillium Web", sans-serif;
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   color: #333;
   background-color: #fff;
@@ -60,6 +85,10 @@ a:hover {
 }
 
 .form-label {
+  font-size: 25px;
+  font-family: "Titillium Web", sans-serif;
+  padding-top: 15px;
+  color: white;
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -68,28 +97,38 @@ a:hover {
 
 .form-text {
   margin-top: 0.25rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #6c757d;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .btn {
+  font-family: "Titillium Web", sans-serif;
+  align-items: center;
+  margin-top: 5%;
   display: inline-block;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.5rem;
   line-height: 1.5;
-  color: #fff;
-  background-color: #007bff;
+  color: #007bff;
+  background-color: white;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.enter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn:hover {
-  background-color: #0069d9;
+  background-color: #b9dbff;
   border-color: #0062cc;
 }
 
