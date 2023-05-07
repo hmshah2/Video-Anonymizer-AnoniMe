@@ -4,7 +4,6 @@ import numpy as np
 from imutils.video import VideoStream
 import os
 
-
 def load_face_detector():
     # Load the pre-trained OpenCV face detector model
     prototxt_path = os.path.join(os.path.dirname(__file__), 'deploy.prototxt')
@@ -49,7 +48,7 @@ def get_face_coords(frame, face_detector, method, params, confidence=0.5):
     detections = detections[detections[:,:,:,2] > confidence]
     coords = []
 
-    # Loop over the detectionsha
+    # Loop over the detections
     for i in range(0, detections.shape[0]):
         # Compute the (x, y)-coordinates of the bounding box for the object
         box = detections[i, 3:7] * np.array([w, h, w, h])
@@ -66,10 +65,9 @@ def process_video(input_filename, output_filename):
     # Load the face detector
     face_detector = load_face_detector()
 
-    # Set the anonymization method and ``parameters``
+    # Set the anonymization method and parameters
     method = "pixelated"
     params = {"k": 99, "sigma": 30, "blocks": 10}
-
 
     vs = cv2.VideoCapture(input_filename)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -131,8 +129,12 @@ def process_video(input_filename, output_filename):
 def main():
     # Get the input video file from the user
     input_file = input("Enter the path to the video file: ")
-    output_file = "/output_videos/output_video.mp4"
+    output_directory = "output_videos"
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+    output_file = os.path.join(output_directory, "output_video.mp4")
     process_video(input_file, output_file)
 
 if __name__ == "__main__":
     main()
+
