@@ -131,7 +131,7 @@ def process_video(input_filename, output_filename):
 def main():
     # Get the input video file from the user
     input_file = input("Enter the path to the video file: ")
-    output_file = "output_video2.mp4"
+    output_file = "/output_videos/output_video.mp4"
     process_video(input_file, output_file)
 
 if __name__ == "__main__":
