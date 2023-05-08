@@ -3,6 +3,8 @@ import imutils
 import numpy as np
 from imutils.video import VideoStream
 import os
+import moviepy as mp
+import moviepy.editor as mpe
 
 def load_face_detector():
     # Load the pre-trained OpenCV face detector model
@@ -62,6 +64,7 @@ def get_face_coords(frame, face_detector, method, params, confidence=0.5):
     return coords
 
 def process_video(input_filename, output_filename):
+    no_audio_path = output_filename[:-4] + "_no_audio.mp4"
     # Load the face detector
     face_detector = load_face_detector()
 
@@ -70,16 +73,10 @@ def process_video(input_filename, output_filename):
     params = {"k": 99, "sigma": 30, "blocks": 10}
 
     vs = cv2.VideoCapture(input_filename)
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-
-    # Get the input video's FPS
-    fps = int(vs.get(cv2.CAP_PROP_FPS))
-
-    out_video = None
-
     coords = []
     while True:
         ret, frame = vs.read()
+        
         if not ret or frame is None:
              break
         frame = imutils.resize(frame, width=400)
@@ -92,6 +89,11 @@ def process_video(input_filename, output_filename):
 
     # Main loop to read frames and process them
     vs = cv2.VideoCapture(input_filename)
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    # Get the input video's FPS
+    fps = int(vs.get(cv2.CAP_PROP_FPS))
+
+    out_video = None
     i=0
     while True:
         ret, frame = vs.read()
@@ -102,7 +104,7 @@ def process_video(input_filename, output_filename):
         # Initialize the output video writer with the resized frame size
         if out_video is None:
             (h, w) = frame.shape[:2]
-            out_video = cv2.VideoWriter(output_filename, fourcc, fps, (w, h), True)
+            out_video = cv2.VideoWriter(no_audio_path, fourcc, fps, (w, h), True)
  
         # Process the frame and anonymize faces
         all_coords = []
@@ -114,7 +116,7 @@ def process_video(input_filename, output_filename):
         out_video.write(processed_frame)
 
         # Display the processed frame
-        cv2.imshow("Anonymized Video", processed_frame)
+        # cv2.imshow("Anonymized Video", processed_frame)
 
         # Exit the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -125,6 +127,21 @@ def process_video(input_filename, output_filename):
     if out_video is not None:
         out_video.release()
     cv2.destroyAllWindows()
+
+    temp_path = "extracted_sound.mp3"
+
+    video = mpe.VideoFileClip(r"{}".format(input_filename))
+    video.audio.write_audiofile(r"{}".format(temp_path))
+    my_clip = mpe.VideoFileClip(no_audio_path)
+    audio_background = mpe.AudioFileClip(temp_path)
+    # print(my_clip.audio)
+    # final_audio = mpe.CompositeAudioClip([my_clip.audio, audio_background])
+    final_clip = my_clip.set_audio(audio_background)
+    final_clip.write_videofile(output_filename)
+
+    os.remove(no_audio_path)
+    os.remove(temp_path)
+
 
 def main():
     # Get the input video file from the user
