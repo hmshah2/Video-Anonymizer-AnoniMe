@@ -2,8 +2,6 @@
 
 ## Video Anonymizer - Face Blur
 
-This project is a real-time video anonymization tool that helps protect people's privacy by automatically blurring faces in videos. It comes with a web app for an easy user experience, but can also be run standalone without the web app.
-
 ### Dependencies
 
 Before running the project, make sure to install the following dependencies:
